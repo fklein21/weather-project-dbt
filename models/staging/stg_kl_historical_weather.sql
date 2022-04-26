@@ -1,10 +1,10 @@
 {{ config(materialized='view') }}
 
-with weather_recent as 
+with weather_historical as 
 (
     select *,
         row_number() over(partition by STATIONS_ID, MESS_DATUM) as row_number
-        from {{ source('staging', 'kl_recent_partitioned_table')}}
+        from {{ source('staging', 'kl_historical_partitioned_table')}}
 )
 select
     -- identifiers
@@ -29,7 +29,8 @@ select
     TNK as temperature_2m_min,
     TGK as temperature_5cm_min
 
-from weather_recent
+from weather_historical
+
 
 {% if var('is_test_run', default=true) %}
 

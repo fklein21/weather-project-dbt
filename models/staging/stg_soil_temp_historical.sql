@@ -1,10 +1,10 @@
 {{ config(materialized='view') }}
 
-with weather_recent as 
+with soil_temp_historical as 
 (
     select *,
         row_number() over(partition by STATIONS_ID, MESS_DATUM) as row_number
-        from {{ source('staging', 'kl_recent_partitioned_table')}}
+        from {{ source('staging', 'soil_temperature_historical_partitioned_table')}}
 )
 select
     -- identifiers
@@ -13,23 +13,16 @@ select
     -- observation date
     --parse_date(cast(MESS_DATUM as string), "%Y%m%d") as mdate
     parse_date("%Y%m%d", cast(MESS_DATUM as string)) as observation_date,
-
+    
     -- measurements
-    FX as wind_max,
-    FM as wind_mean, 
-    RSK as precip_total,
-    RSKF as precip_category,
-    SDK as sunshine_duration,
-    SHK_TAG as snow_height,
-    NM as cloud_cover,
-    VPM as vapor_pressure,
-    TMK as temperature_2m_mean,
-    UPM as relative_humidity,
-    TXK as temperature_2m_max,
-    TNK as temperature_2m_min,
-    TGK as temperature_5cm_min
+    V_TE002M as soil_temp_002m, 
+    V_TE005M as soil_temp_005m, 
+    V_TE010M as soil_temp_010m, 
+    V_TE020M as soil_temp_020m, 
+    V_TE050M as soil_temp_050m,
 
-from weather_recent
+from soil_temp_historical
+
 
 {% if var('is_test_run', default=true) %}
 

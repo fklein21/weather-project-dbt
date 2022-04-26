@@ -1,10 +1,10 @@
 {{ config(materialized='view') }}
 
-with weather_recent as 
+with solar as 
 (
     select *,
         row_number() over(partition by STATIONS_ID, MESS_DATUM) as row_number
-        from {{ source('staging', 'kl_recent_partitioned_table')}}
+        from {{ source('staging', 'solar__partitioned_table')}}
 )
 select
     -- identifiers
@@ -15,21 +15,12 @@ select
     parse_date("%Y%m%d", cast(MESS_DATUM as string)) as observation_date,
 
     -- measurements
-    FX as wind_max,
-    FM as wind_mean, 
-    RSK as precip_total,
-    RSKF as precip_category,
-    SDK as sunshine_duration,
-    SHK_TAG as snow_height,
-    NM as cloud_cover,
-    VPM as vapor_pressure,
-    TMK as temperature_2m_mean,
-    UPM as relative_humidity,
-    TXK as temperature_2m_max,
-    TNK as temperature_2m_min,
-    TGK as temperature_5cm_min
+    cast(ATMO_STRAHL as float64) as longwave_downward_radiation,
+    cast(FD_STRAHL as float64) as sum_diffuse_solar_radiation,
+    cast(FG_STRAHL as float64) as sum_solar_incoming_radiation,
+    cast(SD_STRAHL as float64) as sum_sunshine_duration,
 
-from weather_recent
+from solar
 
 {% if var('is_test_run', default=true) %}
 
