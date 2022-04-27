@@ -1,4 +1,4 @@
-Stations_id,Stationsname,geograph.Breite,geograph.Laenge,Stationshoehe,Naturraumgruppe_Code,Naturraumgruppe,Naturraum_Code,Naturraum,Datum Stationsaufloesung,Bundesland,
+Stations_id,Stationsname,geograph_Breite,geograph_Laenge,Stationshoehe,Naturraumgruppe_Code,Naturraumgruppe,Naturraum_Code,Naturraum,Datum_Stationsaufloesung,Bundesland,
 00140,Altmersleben,52.6861,11.4272,35,86,Altmark,8620,Stendaler Land,,Sachsen-Anhalt,
 00164,Angermünde,53.0316,13.9908,54,74,Rückland der Mecklenburgischen Seenplatte,7440,Uckermärkisches Hügelland (mit Uecker- und Randowtal),,Brandenburg,
 00183,Arkona,54.6791,13.4344,42,71,Mecklenburgisch-Vorpommersches Küstengebiet,7140,Höhen- und Binnenbodden von Nordrügen,31.12.2020,Mecklenburg-Vorpommern,
