@@ -36,3 +36,20 @@ models:
     # Applies to all files under models/example/
     example:
       materialized: view
+
+seeds:
+  my_weather_dwd_project:
+    PH_Beschreibung_Pflanze
+    PH_Beschreibung_Phaenologie_Stationen_Sofortmelder
+    PH_Beschreibung_Phase
+    PH_Beschreibung_Phasendefinition_Sofortmelder_Landwirtschaft_Kulturpflanze
+    PH_Beschreibung_Phasendefinition_Sofortmelder_Obst
+    PH_Beschreibung_Phasendefinition_Sofortmelder_Wildwachsende_Pflanze    
+
+
+
+
+
+
+
+
