@@ -1,4 +1,4 @@
-Objekt_id,Objekt,Phasen_id,Phase,Phasendefinition,BBCH_Code,Hinweis BBCH,
+Objekt_id,Objekt,Phasen_id,Phase,Phasendefinition,BBCH_Code,Hinweis_BBCH,
 310,Apfel,3,Austrieb Beginn,die ersten Knospen brechen auf und das erste Blattgrün wird sichtbar (an mind. 3 Stellen des Beobachtungsobjektes),53,,
 310,Apfel,29,Pflückreife Beginn,"die Äpfel haben ihre charakteristische Färbung angenommen, ein erstes Durchpflücken lohnt sich",87,"definierter Beobachtungszeitpunkt der Phase könnte etwas früher sein, hohe Übereinstimmung zwischen Phase und zugeordnetem BBCH-Stadium",
 310,Apfel,41,Blüte Ende im Beobachtungsgebiet,auch die zuletzt blühenden Sorten im Beobachtungsgebiet haben abgeblüht,,kein BBCH-Code vorhanden,
@@ -12,4 +12,4 @@ Objekt_id,Objekt,Phasen_id,Phase,Phasendefinition,BBCH_Code,Hinweis BBCH,
 360,Rote Johannisbeere,29,Pflückreife Beginn,die Beeren haben ihre sortentypische rote Farbe erreicht und lassen sich leicht vom Stängel lösen,87,"definierter Beobachtungszeitpunkt der Phase könnte etwas früher sein, hohe Übereinstimmung zwischen Phase und zugeordnetem BBCH-Mikrostadium",
 361,"Johannisbeere, alle Sorten",29,Pflückreife Beginn,die Beeren haben ihre sortentypische Farbe erreicht und lassen sich leicht vom Stängel lösen,,,
 361,"Johannisbeere, alle Sorten",29,Pflückreife Beginn,die Beeren haben ihre sortentypische Farbe erreicht und lassen sich leicht vom Stängel lösen,,,
-
+,,,,,,,
