@@ -1,0 +1,24 @@
+version: 2
+
+macros: 
+  - name: set_missing_values_to_null
+    description: >
+      Set missing values (marked as -999) to NULL.
+    arguments: 
+      - name: measurement
+        type: float
+        description: >
+          measurement value.
+          If the measurement value is invalid, will return null.
+
+  - name: decode_precipitation_form
+    description: >
+      Decode the precipitation form of the kl weather data
+    arguments: 
+      - name: precipitation_code
+        type: int
+        description: >
+          precipitation_code value.
+          If the precipitation_code value is invalid, will return null.
+
+

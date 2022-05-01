@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+    - name: staging
+      database: weather-project-92881
+      schema: weather_data_all
+
+      # loaded_at_field: record_loaded_at
+      tables:
+        # weather observations
+        - name: kl_historical_partitioned_table
+        - name: kl_recent_partitioned_table
+        - name: water_equiv_historical_partitioned_table
+        - name: water_equiv_recent_partitioned_table
+        - name: solar__partitioned_table
+        - name: soil_temperature_historical_partitioned_table
+        - name: soil_temperature_recent_partitioned_table
+        # phenology
+        - name: crops_historical_partitioned_table
+        - name: crops_recent_partitioned_table
+        - name: fruit_historical_partitioned_table
+        - name: fruit_recent_partitioned_table
+        - name: wild_historical_partitioned_table
+        - name: wild_recent_partitioned_table
+        # station data
+        - name: kl_recent_station_data_internal_table
+        - name: kl_historical_station_data_internal_table
+        - name: soil_temperature_historical_station_data_internal_table
+        - name: soil_temperature_recent_station_data_internal_table
+        - name: solar__station_data_internal_table
+        - name: water_equiv_historical_station_data_internal_table
+        - name: water_equiv_recent_station_data_internal_table
+         # freshness:
+           # error_after: {count: 6, period: hour}

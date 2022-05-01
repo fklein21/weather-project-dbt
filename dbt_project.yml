@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'my_new_project'
+name: 'my_weather_dwd_project'
 version: '1.0.0'
 config-version: 2
 
@@ -32,7 +32,30 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  my_new_project:
+  my_weather_dwd_project:
     # Applies to all files under models/example/
     example:
       materialized: view
+
+vars:
+  precip_code: [0,1,4,6,7,8,9]
+        
+
+
+
+seeds:
+  my_weather_dwd_project:
+    PH_Beschreibung_Pflanze
+    PH_Beschreibung_Phaenologie_Stationen_Sofortmelder
+    PH_Beschreibung_Phase
+    PH_Beschreibung_Phasendefinition_Sofortmelder_Landwirtschaft_Kulturpflanze
+    PH_Beschreibung_Phasendefinition_Sofortmelder_Obst
+    PH_Beschreibung_Phasendefinition_Sofortmelder_Wildwachsende_Pflanze    
+
+
+
+
+
+
+
+
