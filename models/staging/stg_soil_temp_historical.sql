@@ -15,11 +15,11 @@ select
     parse_date("%Y%m%d", cast(MESS_DATUM as string)) as observation_date,
     
     -- measurements
-    V_TE002M as soil_temp_002m, 
-    V_TE005M as soil_temp_005m, 
-    V_TE010M as soil_temp_010m, 
-    V_TE020M as soil_temp_020m, 
-    V_TE050M as soil_temp_050m,
+    {{ set_missing_values_to_null('V_TE002M') }} as soil_temp_002m, 
+    {{ set_missing_values_to_null('V_TE005M') }} as soil_temp_005m, 
+    {{ set_missing_values_to_null('V_TE010M') }} as soil_temp_010m, 
+    {{ set_missing_values_to_null('V_TE020M') }} as soil_temp_020m, 
+    {{ set_missing_values_to_null('V_TE050M') }} as soil_temp_050m
 
 from soil_temp_historical
 

@@ -37,6 +37,12 @@ models:
     example:
       materialized: view
 
+vars:
+  precip_code: [0,1,4,6,7,8,9]
+        
+
+
+
 seeds:
   my_weather_dwd_project:
     PH_Beschreibung_Pflanze

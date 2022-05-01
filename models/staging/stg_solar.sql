@@ -15,10 +15,14 @@ select
     parse_date("%Y%m%d", cast(MESS_DATUM as string)) as observation_date,
 
     -- measurements
-    cast(ATMO_STRAHL as float64) as longwave_downward_radiation,
-    cast(FD_STRAHL as float64) as sum_diffuse_solar_radiation,
-    cast(FG_STRAHL as float64) as sum_solar_incoming_radiation,
-    cast(SD_STRAHL as float64) as sum_sunshine_duration,
+    {{ set_missing_values_to_null('cast(ATMO_STRAHL as float64)') }} 
+                as longwave_downward_radiation,
+    {{ set_missing_values_to_null('cast(FD_STRAHL as float64)') }} 
+                as sum_diffuse_solar_radiation,
+    {{ set_missing_values_to_null('cast(FG_STRAHL as float64)') }} 
+                as sum_solar_incoming_radiation,
+    {{ set_missing_values_to_null('cast(SD_STRAHL as float64)') }} 
+                as sum_sunshine_duration,
 
 from solar
 

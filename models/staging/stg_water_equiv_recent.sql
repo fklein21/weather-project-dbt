@@ -15,10 +15,14 @@ select
     parse_date("%Y%m%d", cast(MESS_DATUM as string)) as observation_date,
 
     -- measurements
-    cast(ASH_6 as float64) as height_of_snow_pack_sample,
-    cast(SH_TAG as float64) as total_snow_depth, 
-    cast(WASH_6 as float64) as total_snow_water_equivalent,
-    cast(WAAS_6 as float64) as sampled_snow_pack_water_eqivalent,
+    {{ set_missing_values_to_null('cast(ASH_6 as float64)') }}  
+                                as height_of_snow_pack_sample,
+    {{ set_missing_values_to_null('cast(SH_TAG as float64)') }}  
+                                as total_snow_depth, 
+    {{ set_missing_values_to_null('cast(WASH_6 as float64)') }}  
+                                as total_snow_water_equivalent,
+    {{ set_missing_values_to_null('cast(WAAS_6 as float64)') }}  
+                                as sampled_snow_pack_water_eqivalent,
 
 from water_equiv_recent
 

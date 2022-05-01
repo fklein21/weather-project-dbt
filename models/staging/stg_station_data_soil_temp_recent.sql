@@ -1,5 +1,6 @@
 {{ config(materialized='view') }}
 
+
 select
 
     cast(Stations_id as int) as station_id,
