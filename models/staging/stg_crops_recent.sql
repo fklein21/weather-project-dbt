@@ -22,12 +22,15 @@ select
     STATIONS_ID as station_id,
     -- observation date
     --parse_date(cast(MESS_DATUM as string), "%Y%m%d") as mdate
-    parse_date("%Y", cast(REFERENZJAHR as string)) as observation_year,
+    parse_date("%Y", cast(REFERENZJAHR as string)) as observation_year_date,
+    REFERENZJAHR as observation_year,
 
     -- observation
-    OBJEKT_ID as plant_type,
+    OBJEKT_ID as plant_id,
     PHASE_ID as phase_id,
     parse_date("%Y%m%d", cast(EINTRITTSDATUM as string)) as observation_date,
+    extract(dayofyear from parse_date("%Y%m%d", cast(EINTRITTSDATUM as string))) 
+                as observation_day_of_year,
     JULTAG as jultag
 
 from crops_recent
