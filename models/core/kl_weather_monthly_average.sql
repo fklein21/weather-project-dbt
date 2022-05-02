@@ -15,7 +15,7 @@ select
 from (
     select 
         station_id as station_id_kl,
-        concat(extract(year from observation_date)) as observation_year,
+        extract(year from observation_date) as observation_year,
         extract(month from observation_date) as observation_month,
         parse_date("%Y%m", concat(extract(year from observation_date),
                                   extract(month from observation_date))) 
