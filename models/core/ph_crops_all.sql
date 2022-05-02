@@ -90,6 +90,14 @@ wild_without_dup as (
     from wild_unioned
 ),
 
+all_plant_types as (
+    select * from crops_without_dup
+    union all
+    select * from fruit_without_dup
+    union all
+    select * from wild_without_dup
+),
+
 station_data as (
     select *
     from {{ ref('station_data_all') }}
@@ -101,41 +109,41 @@ phases as (
 )
 
 select 
-crops_data.station_id,
-station_name,
-plant_type,
-crops_data.plant_id,
-plantname_ger,
-plantname_en,
-plantname_latin,
-observation_year_date,
-observation_year,
-crops_data.phase_id,
-phase,
-phase_en,
-phase_definition,
-observation_date,
-observation_day_of_year,
-jultag,
-bbch_code,
-bbch_note,
-date_from,
-date_to,
-altitude,
-latitude,
-longitude,
-federal_state,
-station_age
-from crops_without_dup as crops_data
+    all_plant_types.station_id,
+    station_name,
+    plant_type,
+    all_plant_types.plant_id,
+    plantname_ger,
+    plantname_en,
+    plantname_latin,
+    observation_year_date,
+    observation_year,
+    all_plant_types.phase_id,
+    phase,
+    phase_en,
+    phase_definition,
+    observation_date,
+    observation_day_of_year,
+    jultag,
+    bbch_code,
+    bbch_note,
+    date_from,
+    date_to,
+    altitude,
+    latitude,
+    longitude,
+    federal_state,
+    station_age
+from all_plant_types as all_plant_types
 left join station_data
-    on crops_data.station_id = station_data.station_id
+    on all_plant_types.station_id = station_data.station_id
 left join phases
-    on crops_data.plant_id = phases.plant_id and
-       crops_data.phase_id = phases.phase_id
-where crops_data.rank = 1
-order by crops_data.station_id,
-         crops_data.plant_id,
-         crops_data.phase_id
+    on all_plant_types.plant_id = phases.plant_id and
+       all_plant_types.phase_id = phases.phase_id
+where all_plant_types.rank = 1
+order by all_plant_types.station_id,
+         all_plant_types.plant_id,
+         all_plant_types.phase_id
 
 
 
