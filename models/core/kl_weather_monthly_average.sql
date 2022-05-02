@@ -14,8 +14,9 @@ select
 from (
     select 
         station_id as station_id_kl,
-        extract(year from observation_date) as year,
-        extract(month from observation_date) as month,
+        parse_date("%Y%m", concat(extract(year from observation_date),
+                                  extract(month from observation_date))) 
+                   as observation_date,
         avg(wind_max) as wind_max_avg,
         avg(wind_mean) as wind_mean_avg,
         avg(precip_total) as precip_total_avg,
@@ -44,7 +45,7 @@ from (
     from 
         weather_all
     group by
-        station_id, year, month
+        station_id, observation_date
 ) as weather_all_avg
 join station_data
     on weather_all_avg.station_id_kl = station_data.station_id

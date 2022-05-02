@@ -14,7 +14,8 @@ select
 from (
     select 
         station_id as station_id_kl,
-        extract(year from observation_date) as year,
+        parse_date("%Y%m", concat(extract(month from observation_date))) 
+                   as observation_date,
         avg(wind_max) as wind_max_avg,
         avg(wind_mean) as wind_mean_avg,
         avg(precip_total) as precip_total_avg,
