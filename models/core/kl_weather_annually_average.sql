@@ -10,10 +10,12 @@ station_data as (
 )
 
 select 
-    *
+    station_id,
+    * except(station_id_kl, station_id)
 from (
     select 
         station_id as station_id_kl,
+        concat(extract(year from observation_date)) as observation_year,
         parse_date("%Y", concat(extract(year from observation_date))) 
                    as observation_date,
         avg(wind_max) as wind_max_avg,
@@ -43,12 +45,15 @@ from (
         avg(sampled_snow_pack_water_eqivalent) as sampled_snow_pack_water_eqivalent_avg,
     from 
         weather_all
+    where 
+        extract(year from observation_date) <  extract(year from CURRENT_DATE())
     group by
-        station_id, observation_date
+        station_id, observation_year, observation_date
 ) as weather_all_avg
 join station_data
     on weather_all_avg.station_id_kl = station_data.station_id
-
+order by 
+    station_id, observation_date
 
 
 
